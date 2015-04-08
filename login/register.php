@@ -23,15 +23,15 @@ if (!$stmt->execute()) {
 //user has to be registered to get to this point
 
 if (!($stmt = $con->prepare("SELECT * FROM `".$config['db']['table-prefix']."users` WHERE `username`=?"))) {
-    die(json_encode(array('code' => 1, 'message' => $con->error."1")));
+    die(json_encode(array('code' => 1, 'message' => $con->error)));
 }
 
 if (!$stmt->bind_param("s", $username)) {
-    die(json_encode(array('code' => 1, 'message' => $con->error."2")));
+    die(json_encode(array('code' => 1, 'message' => $con->error)));
 }
 
 if (!$stmt->execute()) {
-    die(json_encode(array('code' => 1, 'message' => $con->error."3")));
+    die(json_encode(array('code' => 1, 'message' => $con->error)));
 }
 
 $result = $stmt->get_result();
@@ -39,7 +39,7 @@ $result = $stmt->get_result();
 if ($result->num_rows > 0) {
 	die(json_encode(array('code' => 0, 'message' => "SUCESS", 'userid' => $result->fetch_assoc()['id'])));
 } else {
-	die(json_encode(array('code' => 1, 'message' => $con->error."4")));
+	die(json_encode(array('code' => 1, 'message' => $con->error)));
 }
 
 }

@@ -20,9 +20,15 @@ The code is the status after the code has run, you can find a list of them here:
 2: Invalid query, this usually means there was not enough information entered to proceed, message will tell you what is missing
 3: Invalid API key, the key you specified was not found in the database
 4: <Registration> User name already in use.
-
+5: <Login> Password incorrect
+6: <Login> Username not found in database
 
 Returns:
 
 Register:
-type=register will (on success) return the userid of the newly created user
+userid=register will (on success) return the userid of the newly created user
+
+
+Login:
+id: The unique Identification digit of the user
+regodate: The date of registration
