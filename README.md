@@ -20,22 +20,22 @@ The code is the status after the code has run, you can find a list of them here:
 5: <Login> Password incorrect<br>
 6: <Login> Username not found in database<br>
 
-Types:
+Types:<br>
 
-register:
-	returns:
-		userid=the userid of the newly created user
+register:<br>
+	returns:<br>
+		userid=the userid of the newly created user<br>
 
 	required data:
 		GET: key - Your API key
 		POST: username
 		POST: password
 
-login:
-	returns:
-		id: The unique Identification digit of the user
-		regodate: The unixtime of registration
-		lastlogin: Last unixtime the user logged in
+login:<br>
+	returns:<br>
+		id: The unique Identification digit of the user<br>
+		regodate: The unixtime of registration<br>
+		lastlogin: Last unixtime the user logged in<br>
 	
 	required data:
 		GET: key - Your API key
@@ -45,18 +45,18 @@ login:
 	The lastlogin is automaticly updated in this method
 		
 		
-changepass:
-	required data:
-		GET: key - Your API key
-		POST: username
-		POST: password
-		POST: newpassword
+changepass:<br>
+	required data:<br>
+		GET: key - Your API key<br>
+		POST: username<br>
+		POST: password<br>
+		POST: newpassword<br>
 		
 	You do not need to check the old password before sending this.
 		
 		
-test:
-	required data:
-		GET: key - Your API key
+test:<br>
+	required data:<br>
+		GET: key - Your API key<br>
 		
 	This can be used to quickly test if your API key is valid
