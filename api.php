@@ -2,6 +2,7 @@
 require('common.php');
 require('login/register.php');
 require('login/login.php');
+require('login/updatepass.php');
 
 if(!isset($_GET['type'])) {
 	die(json_encode(array('code' => 2, "message" => "MISSING TYPE")));
@@ -66,6 +67,27 @@ case 'login':
 	} else {
 		die(json_encode(array('code' => 3, 'message' => "INVALID KEY")));
 	}
+	break;
+	
+case 'changepass':
+	if(in_array($_GET['key'], $keys)) {
+		if(isset($_POST['username'])) {
+			if(isset($_POST['password'])) {
+				if(isset($_POST['newpassword'])) {
+					updatepass($_POST['username'], $_POST['password'], $_POST['newpassword'], $config);
+				} else {
+					die(json_encode(array('code' => 2, "message" => "MISSING NEW PASSWORD")));
+				}
+			} else {
+				die(json_encode(array('code' => 2, "message" => "MISSING OLD PASSWORD")));
+			}
+		} else {
+			die(json_encode(array('code' => 2, "message" => "MISSING USERNAME")));
+		}
+	} else {
+		die(json_encode(array('code' => 3, 'message' => "INVALID KEY")));
+	}
+	break;
 
 
 }
