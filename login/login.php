@@ -19,7 +19,19 @@ $con = new mysqli($config['db']['address'], $config['db']['user'], $config['db']
 	if ($result->num_rows > 0) {
 		$row = $result->fetch_assoc();
 		if(password_verify($password, $row['password'])) {
-			die(json_encode(array('code' => 0, 'message' => "SUCESS", 'id' => $row['id'], 'regodate' => $row['regodate'])));
+			//User logged in, but we need to update lastlogin first
+			if (!($stmt = $con->prepare("UPDATE `".$config['db']['table-prefix']."users` SET `lastlogin`=? WHERE `username`=?;"))) {
+				die(json_encode(array('code' => 1, 'message' => $con->error)));
+			}
+
+			if (!$stmt->bind_param("is", time(), $username)) {
+				die(json_encode(array('code' => 1, 'message' => $con->error)));
+			}
+
+			if (!$stmt->execute()) {
+				die(json_encode(array('code' => 1, 'message' => $con->error)));
+			}
+			die(json_encode(array('code' => 0, 'message' => "SUCESS", 'id' => $row['id'], 'regodate' => $row['regodate'], 'lastlogin' => $row['lastlogin'])));
 		} else {
 			die(json_encode(array('code' => 5, 'message' => "INVALID PASSWORD")));
 		}
