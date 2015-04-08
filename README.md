@@ -15,13 +15,13 @@ Some query's might return other values as well, however all of the will return a
 
 The code is the status after the code has run, you can find a list of them here:
 
-0: Code completed successfully
-1: MYSQL error occurred, error will be in the message
-2: Invalid query, this usually means there was not enough information entered to proceed, message will tell you what is missing
-3: Invalid API key, the key you specified was not found in the database
-4: <Registration> User name already in use.
-5: <Login> Password incorrect
-6: <Login> Username not found in database
+0: Code completed successfully<br>
+1: MYSQL error occurred, error will be in the message<br>
+2: Invalid query, this usually means there was not enough information entered to proceed, message will tell you what is missing<br>
+3: Invalid API key, the key you specified was not found in the database<br>
+4: <Registration> User name already in use.<br>
+5: <Login> Password incorrect<br>
+6: <Login> Username not found in database<br>
 
 Returns:
 
