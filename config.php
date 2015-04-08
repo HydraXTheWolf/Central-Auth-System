@@ -18,7 +18,7 @@ $config['db'] = array(
 	"table-prefix" => $db_prefix,
 	);
 $config['installed'] = true;
-
+	
 
 unset($db_user);
 unset($db_pass);
