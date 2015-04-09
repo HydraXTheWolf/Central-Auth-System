@@ -8,7 +8,7 @@ This is being designed for the new website at digitalhazards.net
 
 You can make a query by sending the required data to the api.php via HTML. these can be done many ways, the easiest using cURL.
 
-All data returned will be in a JSON format. sample data of a successful run will be included soon.
+All data returned will be in a JSON format. sample data can be found in the API.php
 
 The code is the status after the code has run, you can find a list of them here:
 
@@ -60,3 +60,14 @@ test:<br>
 		GET: key - Your API key<br>
 		
 	This can be used to quickly test if your API key is valid
+	
+removeuser:<br>
+	required data:<br>
+		GET: key - Your API key<br>
+		POST: username - the username to remove<br>
+		
+	There is currently no permission check for this.
+	
+listusers:<br>
+	returns:
+		users: a array with the userid as the index that contains the mysql row.

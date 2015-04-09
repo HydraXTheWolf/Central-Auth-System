@@ -3,6 +3,8 @@ require('common.php');
 require('login/register.php');
 require('login/login.php');
 require('login/updatepass.php');
+require('login/removeuser.php');
+require('login/listusers.php');
 
 if(!isset($_GET['type'])) {
 	die(json_encode(array('code' => 2, "message" => "MISSING TYPE")));
@@ -53,6 +55,9 @@ case 'register':
 	}
 	break;
 	
+	
+// A successful login will look something like this:
+// {"code":0,"message":"SUCESS","id":1,"regodate":1428477727,"lastlogin":1428486122}
 case 'login':
 	if(in_array($_GET['key'], $keys)) {
 		if(isset($_POST['username'])) {
@@ -69,6 +74,9 @@ case 'login':
 	}
 	break;
 	
+	
+// A successful password change will always look like this:
+// {"code":0,"message":"SUCESS"}
 case 'changepass':
 	if(in_array($_GET['key'], $keys)) {
 		if(isset($_POST['username'])) {
@@ -84,6 +92,28 @@ case 'changepass':
 		} else {
 			die(json_encode(array('code' => 2, "message" => "MISSING USERNAME")));
 		}
+	} else {
+		die(json_encode(array('code' => 3, 'message' => "INVALID KEY")));
+	}
+	break;
+	
+	
+case 'removeuser':
+	if(in_array($_GET['key'], $keys)) {
+		if(isset($_POST['username'])) {
+					removeuser($_POST['username'], $config);
+		} else {
+			die(json_encode(array('code' => 2, "message" => "MISSING USERNAME")));
+		}
+	} else {
+		die(json_encode(array('code' => 3, 'message' => "INVALID KEY")));
+	}
+	break;
+
+
+case 'listusers':
+	if(in_array($_GET['key'], $keys)) {
+					listusers($config);
 	} else {
 		die(json_encode(array('code' => 3, 'message' => "INVALID KEY")));
 	}

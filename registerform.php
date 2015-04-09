@@ -36,3 +36,18 @@ New Password:<br>
 <br><br>
 <input type="submit" value="Submit">
 </form>
+<br>
+<br>
+Remove user:
+<form action="api.php?key=Bd6VX5IZMSE2C7ki&type=removeuser" method="POST">
+User:<br>
+<input type="text" name="username">
+<br><br>
+<input type="submit" value="Submit">
+</form>
+<br>
+<br>
+List Users:
+<form action="api.php?key=Bd6VX5IZMSE2C7ki&type=listusers" method="POST">
+<input type="submit" value="Submit">
+</form>

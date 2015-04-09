@@ -1,4 +1,7 @@
 <?php
+
+//A sucessful register will look something like this:
+//{"code":0,"message":"SUCESS","userid":3}
 function register($username, $password, $config) {
 $password = password_hash($password, PASSWORD_BCRYPT);
 $con = new mysqli($config['db']['address'], $config['db']['user'], $config['db']['pass'], $config['db']['name'], $config['db']['port']);

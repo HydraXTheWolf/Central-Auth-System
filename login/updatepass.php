@@ -1,4 +1,7 @@
 <?php
+
+//A successful update password will look like this:
+//{"code":0,"message":"SUCESS"}
 function updatepass($username, $oldpassword, $newpassword, $config) {
 	$con = new mysqli($config['db']['address'], $config['db']['user'], $config['db']['pass'], $config['db']['name'], $config['db']['port']);
 
