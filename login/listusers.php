@@ -7,11 +7,11 @@ function listusers($config) {
 	$con = new mysqli($config['db']['address'], $config['db']['user'], $config['db']['pass'], $config['db']['name'], $config['db']['port']);
 
 	if (!($stmt = $con->prepare("SELECT * FROM `".$config['db']['table-prefix']."users`;"))) {
-		die(json_encode(array('code' => 1, 'message' => $con->error)));
+		return json_encode(array('code' => 1, 'message' => $con->error));
 	}
 
 	if (!$stmt->execute()) {
-		die(json_encode(array('code' => 1, 'message' => $con->error)));
+		return json_encode(array('code' => 1, 'message' => $con->error));
 	}
 	$result = $stmt->get_result();
 	while ($row = $result->fetch_assoc()) {
@@ -21,7 +21,7 @@ function listusers($config) {
     }
 	
 	
-	die(json_encode(array('code' => 0, 'message' => "SUCESS", 'users' => $users)));
+	return json_encode(array('code' => 0, 'message' => "SUCESS", 'users' => $users));
 	
 
 

@@ -5,6 +5,8 @@ $db_address = "localhost";
 $db_port = 3306;
 $db_name = "cas";
 $db_prefix = "cas-";
+
+$allow_html_requests = false;
 //DO NOT EDIT PAST HERE
 
 $config = array();
@@ -18,6 +20,7 @@ $config['db'] = array(
 	"table-prefix" => $db_prefix,
 	);
 $config['installed'] = true;
+$config['allow-html-requests'] = $allow_html_requests;
 	
 
 unset($db_user);
