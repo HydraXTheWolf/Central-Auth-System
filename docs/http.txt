@@ -1,0 +1,14 @@
+The HTTP method is designed for using the API across file systems, however for security it is disabled by default.
+
+You can enable it by changing the following line in 'config.php': "$allow_html_requests = false;" to "$allow_html_requests = true;"
+
+All HTTP requests are to be sent to the index.php, as any HTTP requests to the api.php will be ignored
+
+Every request requires 2 GET fields:
+	key: every HTTP request requires your API key under the value 'key'
+	type: this is the function name, the same as shown in the methods docs file.
+	
+Most of the methods also require some POST data, this is shown in the methods docs file.
+
+An example of a listusers request(no post data for listusers) is:
+"http://localhost/cas/?key=MYAPIKEY&type=listusers"

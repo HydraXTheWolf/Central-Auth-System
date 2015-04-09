@@ -1,0 +1,11 @@
+Accessing this via the include method is recommended,
+however it requires that the CAS is on the same file system as the service accessing it.
+
+To use the API using this method, you need to first include the api.php, then create an API object with your API key.
+
+-------------------------------------
+require('cas/api.php');
+$api = new CAS_API('your key here');
+-------------------------------------
+
+Once you have your API object, you can call any of the methods listed in 'docs/methods/'

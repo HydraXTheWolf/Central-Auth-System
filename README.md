@@ -2,13 +2,19 @@
 
 This is not designed to be accessed directly, this is a system for handling logins.
 
-I will include an example of how to integrate this to a website as I progress in development.
-
 This is being designed for the new website at digitalhazards.net
 
-You can make a query by sending the required data to the api.php via HTML. these can be done many ways, the easiest using cURL.
+There are 2 ways to send a query to the API:
 
-All data returned will be in a JSON format. sample data can be found in the API.php
+The first(recommended) is by directly including the api.php. (See docs/include.txt)
+
+The other way, is for having the API on a separate system to the service accessing it. (See docs/http.txt)
+
+You can make a query by sending the required data to the api.php via HTML. these can be done many ways, the easiest using cURL.
+A example of the GET data is:
+http://localhost/cas/Central-Auth-System/api.php?key=MYKEY&type=listusers
+
+All data returned will be in a JSON format.
 
 The code is the status after the code has run, you can find a list of them here:
 
@@ -19,55 +25,6 @@ The code is the status after the code has run, you can find a list of them here:
 4: <Registration> User name already in use.<br>
 5: <Login> Password incorrect<br>
 6: <Login> Username not found in database<br>
+7: You tried to create a HTTP request when HTTP requests are disallowed
 
-Types:<br>
-
-register:<br>
-	returns:<br>
-		userid=the userid of the newly created user<br>
-
-	required data:
-		GET: key - Your API key
-		POST: username
-		POST: password
-
-login:<br>
-	returns:<br>
-		id: The unique Identification digit of the user<br>
-		regodate: The unixtime of registration<br>
-		lastlogin: Last unixtime the user logged in<br>
-	
-	required data:
-		GET: key - Your API key
-		POST: username
-		POST: password
-		
-	The lastlogin is automaticly updated in this method
-		
-		
-changepass:<br>
-	required data:<br>
-		GET: key - Your API key<br>
-		POST: username<br>
-		POST: password<br>
-		POST: newpassword<br>
-		
-	You do not need to check the old password before sending this.
-		
-		
-test:<br>
-	required data:<br>
-		GET: key - Your API key<br>
-		
-	This can be used to quickly test if your API key is valid
-	
-removeuser:<br>
-	required data:<br>
-		GET: key - Your API key<br>
-		POST: username - the username to remove<br>
-		
-	There is currently no permission check for this.
-	
-listusers:<br>
-	returns:
-		users: a array with the userid as the index that contains the mysql row.
+For information on each method, read the respective file in 'docs/methods/'

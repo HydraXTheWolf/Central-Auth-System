@@ -1,0 +1,27 @@
+The remove user method does exactly that, it removes the row with the username specified.
+however, this method does not have any extra security, so keep your API key a secret.
+
+The removeuser method takes ome extra field in POST data:
+username
+
+INCLUDE EXAMPLE:
+-------------------------------
+require('cas/api.php');
+$api = new CAS_API($key);
+$response = $api->removeUser('username');
+-------------------------------
+
+HTML EXAMPLE:
+----------------------------
+$c = curl_init();
+$postdata = array(
+	'username' => 'user');
+	
+curl_setopt($c, CURLOPT_URL,"http://localhost/cas/?key=APIKEY&type=removeuser");
+curl_setopt($c, CURLOPT_POST, 1);
+curl_setopt($c, CURLOPT_POSTFIELDS, http_build_query($postdata));
+curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+
+$response = curl_exec($c);
+curl_close($c);
+----------------------------

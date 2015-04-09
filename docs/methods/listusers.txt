@@ -1,0 +1,17 @@
+The list users method is one of the only ones that do not require any extra data.
+
+INCLUDE EXAMPLE:
+-------------------------------
+require('cas/api.php');
+$api = new CAS_API($key);
+$response = $api->listUsers();
+-------------------------------
+
+HTML EXAMPLE:
+----------------------------
+$c = curl_init('http://localhost/cas/?key=APIKEY&type=listusers');
+curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+
+$response = curl_exec($c);
+curl_close($c);
+----------------------------

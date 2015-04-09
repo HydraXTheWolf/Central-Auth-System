@@ -1,0 +1,30 @@
+The login method will return 0 if the user has sent valid login information
+
+The login function checks that the username and password are correct, and if they are; return the users sql row and update the users lastlogin time.
+
+The login method takes 2 extra fields in POST data:
+username,
+password
+
+INCLUDE EXAMPLE:
+-------------------------------
+require('cas/api.php');
+$api = new CAS_API($key);
+$response = $api->login('username', 'password');
+-------------------------------
+
+HTML EXAMPLE:
+----------------------------
+$c = curl_init();
+$postdata = array(
+	'username' => 'user',
+	'password' => 'pass');
+	
+curl_setopt($c, CURLOPT_URL,"http://localhost/cas/?key=APIKEY&type=login");
+curl_setopt($c, CURLOPT_POST, 1);
+curl_setopt($c, CURLOPT_POSTFIELDS, http_build_query($postdata));
+curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+
+$response = curl_exec($c);
+curl_close($c);
+----------------------------

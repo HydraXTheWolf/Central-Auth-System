@@ -1,0 +1,31 @@
+The updatepass method changes the password on a user.
+The method automaticly checks if the old password was correct, before changing it to the new one.
+
+The updatepass method takes 3 extra fields in POST data:
+username,
+password,
+newpassword
+
+INCLUDE EXAMPLE:
+-------------------------------
+require('cas/api.php');
+$api = new CAS_API($key);
+$response = $api->updatePass('username', 'password', 'newpassword');
+-------------------------------
+
+HTML EXAMPLE:
+----------------------------
+$c = curl_init();
+$postdata = array(
+	'username' => 'user',
+	'password' => 'pass',
+	'newpassword' => 'newpass');
+	
+curl_setopt($c, CURLOPT_URL,"http://localhost/cas/?key=APIKEY&type=updatepass");
+curl_setopt($c, CURLOPT_POST, 1);
+curl_setopt($c, CURLOPT_POSTFIELDS, http_build_query($postdata));
+curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+
+$response = curl_exec($c);
+curl_close($c);
+----------------------------

@@ -1,0 +1,29 @@
+The Register method adds a user to the users table.
+however, this method does not set the lastlogin time, as the user is not logged in once created. the lastlogin will be NULL until the user logs in.
+
+The registeruser method takes 2 extra fields in POST data:
+username,
+password
+
+INCLUDE EXAMPLE:
+-------------------------------
+require('cas/api.php');
+$api = new CAS_API($key);
+$response = $api->registerUser('username', 'password');
+-------------------------------
+
+HTML EXAMPLE:
+----------------------------
+$c = curl_init();
+$postdata = array(
+	'username' => 'user',
+	'password' => 'pass');
+	
+curl_setopt($c, CURLOPT_URL,"http://localhost/cas/?key=APIKEY&type=registeruser");
+curl_setopt($c, CURLOPT_POST, 1);
+curl_setopt($c, CURLOPT_POSTFIELDS, http_build_query($postdata));
+curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
+
+$response = curl_exec($c);
+curl_close($c);
+----------------------------
