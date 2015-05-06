@@ -1,6 +1,6 @@
 <?php
 $db_user = "root";
-$db_pass = "alex24";
+$db_pass = "password";
 $db_address = "localhost";
 $db_port = 3306;
 $db_name = "cas";
@@ -19,7 +19,7 @@ $config['db'] = array(
 	"name" => $db_name,
 	"table-prefix" => $db_prefix,
 	);
-$config['installed'] = true;
+$config['installed'] = false;
 $config['allow-html-requests'] = $allow_html_requests;
 	
 
